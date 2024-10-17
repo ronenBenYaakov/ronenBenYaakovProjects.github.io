@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Floating Cards with Space Background</title>
+</head>
+<body>
+<script>
+  const starsContainer = document.createElement('div');
+  starsContainer.classList.add('stars');
+  document.body.appendChild(starsContainer);
+
+  const numberOfStars = 100; // Adjust the number of stars as needed
+
+  for (let i = 0; i < numberOfStars; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+
+    // Random position and size for stars
+    const size = Math.random() * 3 + 1; // Size between 1 and 4 pixels
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.top = `${Math.random() * 100}vh`;
+    star.style.left = `${Math.random() * 100}vw`;
+    starsContainer.appendChild(star);
+  }
+</script>
+
+<div class="stars"></div>
+<div class="container">
+  <div class="card">
+    <img src="rocket_icon_transparent.png" alt="CNN-based Rocket Detection System" class="card-image">
+    <h3>CNN-based Rocket Detection System</h3>
+    <p>This project utilizes Convolutional Neural Networks for detecting rockets.</p>
+    <a href="https://github.com/ronenBenYaakov/Rocket-Detector" target="_blank" class="card-button">Link</a>
+  </div>
+  <div class="card">
+    <img src="credit_card_scam_icon.png" alt="Credit Card Scam Detector" class="card-image">
+    <h3>Credit Card Scam Detector</h3>
+    <p>A tool designed to detect fraudulent credit card transactions.</p>
+    <a href="https://github.com/ronenBenYaakov/credit-card-scam-detector" target="_blank" class="card-button">Link</a>
+  </div>
+  <div class="card">
+    <img src="gym_app_icon.jpg" alt="Gym App" class="card-image">
+    <h3>Gym App (In Construction)</h3>
+    <p>This is a gym management app currently under development.</p>
+    <a href="https://github.com/ronenBenYaakov/GymApp" target="_blank" class="card-button">Link</a>
+  </div>
+  <div class="card">
+    <img src="TCP_chat_room_icon%20(2).png" alt="TCP Chat Room" class="card-image">
+    <h3>TCP Chat Room</h3>
+    <p>A chat room application utilizing TCP for real-time communication.</p>
+    <a href="https://github.com/ronenBenYaakov/TCP-chat-room" target="_blank" class="card-button">Link</a>
+  </div>
+  <div class="card">
+    <img src="assemly_icon.png" alt="Assembler in C 90" class="card-image">
+    <h3>Assembler in C 90</h3>
+    <p>An assembler program written in C90 standards.</p>
+    <a href="https://github.com/ronenBenYaakov/AssemblerC90" target="_blank" class="card-button">Link</a>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.card-button').forEach(button => {
+    button.addEventListener('click', function (e) {
+      const ripple = document.createElement('span');
+      const rect = button.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+
+      ripple.style.width = ripple.style.height = `${size}px`;
+      ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+      ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+      ripple.classList.add('ripple');
+
+      button.appendChild(ripple);
+
+      ripple.addEventListener('animationend', () => {
+        ripple.remove();
+      });
+    });
+  });
+</script>
+</body>
+</html>
